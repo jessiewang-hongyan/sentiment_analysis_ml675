@@ -10,3 +10,12 @@ Final project for EN.601.675.
 ## Run virutal environment in VSCode:
 1. Open cmd in terminal
 2. input '.venv/Scripts/activate'
+
+
+## Packages to install
+- numpy
+- matplotlib
+- torch
+- nltk
+- pandas
+- scikit-learn
