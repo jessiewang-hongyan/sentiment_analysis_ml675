@@ -33,7 +33,7 @@ def text_preprocess(tweet: str):
     pass
 
 if __name__ == "__main__":
-    nltk.download('stopwords', './stopwords')
+    # nltk.download('stopwords', './stopwords')
 
     X, y = read_data()
     print(f"X0: {X.iloc[0]}")
