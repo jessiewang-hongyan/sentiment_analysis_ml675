@@ -1,7 +1,7 @@
 import torch
 from transformers import BertTokenizer
 
-def tokenize(sentences, labels, max_length = 64):
+def tokenize(sentences, labels):
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
 
     max_len = 0

@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import nltk
+from tokenizer import tokenize
 
 '''Read the data from csv into a dataframe,
 return data matrix X and label matrix y.'''
@@ -28,9 +29,12 @@ def stats_by_category(X, y):
 #       remove punctuations
 #       convert all capital letters into small ones
 #       stemming
-#       convert words into embeddings
+#       convert words into embeddings - tokenize
+#       save as a file
 def text_preprocess(tweet: str):
     pass
+    # processed_tweet = 
+    # return processed_tweet
 
 if __name__ == "__main__":
     # nltk.download('stopwords', './stopwords')
