@@ -6,14 +6,17 @@ from torch.utils.data import DataLoader, random_split
 from torchmetrics import Accuracy
 from pytorch_lightning.loggers import TensorBoardLogger
 from model import BertClassifier, TestModel
+from dataloader import TwitterDataset
 
 class ModelTraining(pl.LightningModule):
-    def __init__(self):
+    def __init__(self, dataset: TwitterDataset):
         super().__init__()
         self.model = TestModel()
         
         self.loss = nn.CrossEntropyLoss()
         self.acc = Accuracy()
+
+        self.train_dl, self.val_dl, self.test_dl = dataset.get_dataloaders([0.8, 0.1, 0.1])
 
         # self.logger = TensorBoardLogger("tb_logs", name="my_model")
 
@@ -60,14 +63,17 @@ class ModelTraining(pl.LightningModule):
         self.logger.experiment.add_scalar('avg_val_acc',avg_acc, self.current_epoch)
     
     def train_dataloader(self):
-        train_data = datasets.MNIST('data', train=True, download=True, transform=transforms.ToTensor())
-        train_loader = DataLoader(train_data, batch_size=32)
-        return train_loader
+        # train_data = datasets.MNIST('data', train=True, download=True, transform=transforms.ToTensor())
+        # train_loader = DataLoader(train_data, batch_size=32)
+        return self.train_dl
 
     def val_dataloader(self):
-        val_data = datasets.MNIST('data', train=True, download=True, transform=transforms.ToTensor())
-        val_loader = DataLoader(val_data, batch_size=32)
-        return val_loader
+        # val_data = datasets.MNIST('data', train=True, download=True, transform=transforms.ToTensor())
+        # val_loader = DataLoader(val_data, batch_size=32)
+        return self.val_dl
+
+    def test_dataloader(self):
+        return self.test_dl
 
 
 class TwitterClassifier(pl.LightningModule):

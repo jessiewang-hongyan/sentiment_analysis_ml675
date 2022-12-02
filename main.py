@@ -1,6 +1,6 @@
 import pytorch_lightning as pl
 from trainer import ModelTraining
-from dataloader import get_dataloaders
+from dataloader import TwitterDataset
 
 
 if __name__ == '__main__':
