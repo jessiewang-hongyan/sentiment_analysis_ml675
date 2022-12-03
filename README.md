@@ -1,5 +1,6 @@
 # sentiment_analysis_ml675
 Final project for EN.601.675. 
+Runable colab notebook: https://colab.research.google.com/drive/1cEBcIBwoRyPbYammOuuY2SuTNC-TCmQ7?usp=sharing
 
 
 ## Run virutal environment in VSCode:
