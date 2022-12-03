@@ -6,6 +6,7 @@ class TwitterDataset(Dataset):
     def __init__(self):
         super().__init__()
         self.attrs = torch.load('inputs.pt')
+        self.mask = torch.load('mask.pt')
         self.labels = torch.load('labels.pt')
 
     def __len__(self):
@@ -13,8 +14,9 @@ class TwitterDataset(Dataset):
 
     def __getitem__(self, idx):
         X = self.attrs[idx, :]
+        Z = self.mask[idx, :]
         y = self.labels[idx]
-        return X, y
+        return {'logits':X, 'mask':Z}, y
 
     def get_dataloaders(self, ratio=[0.8, 0.1, 0.1]):
         # train_data = datasets.MNIST('data', train=True, download=True, transform=transforms.ToTensor())

@@ -6,9 +6,8 @@ import torch
 
 if __name__ == '__main__':
     X = torch.load('inputs.pt')
+    Z = torch.load('mask.pt')
     y = torch.load('labels.pt')
-    print(X.shape)
-    print(y.shape)
 
     dataset = TwitterDataset()
     model = ModelTraining(dataset)

@@ -11,15 +11,19 @@ class BertClassifier(BertPreTrainedModel):
 
         self.num_label = num_label
         self.bert = BertModel(configuration)
-        self.linear = LinearClassifier(configuration.hidden_size, self.num_label, dropout_ratio=0.8)
+        self.linear = LinearClassifier(configuration.hidden_size, self.num_label, dropout_ratio=0.2)
 
     def forward(self, x):
-        outputs = self.bert(x).last_hidden_state
+        logits = x['logits']
+        mask = x['mask']
+        outputs = self.bert(logits, encoder_attention_mask = mask).last_hidden_state
         pred = self.linear(outputs)
         return pred[:, -1, :]
 
     def predict(self, x):
-        pred = self(x)
+        logits = x['logits']
+        mask = x['mask']
+        pred = self(logits, encoder_attention_mask = mask).last_hidden_state
         return torch.argmax(pred, dim=1)
 
 class LinearClassifier(nn.Module):

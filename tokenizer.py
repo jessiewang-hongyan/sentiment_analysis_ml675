@@ -31,7 +31,7 @@ def tokenize(sentences, labels):
     attention_masks = torch.cat(attention_masks, dim=0)
     labels = torch.tensor(labels)
 
-    return input_ids, labels
+    return input_ids, attention_masks, labels
 
 if __name__ == '__main__':
     sentences = ['I love you']

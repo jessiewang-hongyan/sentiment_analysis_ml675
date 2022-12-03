@@ -37,8 +37,9 @@ def text_preprocess(tweets, labels):
         x_i = tw.split(' ')
         processed.append(x_i)
 
-    X, y = tokenize(processed, labels)
+    X, Z, y = tokenize(processed, labels)
     torch.save(X, 'inputs.pt')
+    torch.save(Z, 'mask.pt')
     torch.save(y, 'labels.pt')
 
 if __name__ == "__main__":
