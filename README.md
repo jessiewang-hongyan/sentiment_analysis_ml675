@@ -36,5 +36,5 @@ In *main.py*, line 18, uncomment the *gpus* argument and assign correct numbers 
 3. In *hparams.txt*, add epochs, model structures, hyperparameters, final train/val loss and accuracy
 4. Push all files except the checkpoint in that folder
 
-**Important**: Please do not upload checkpoint to github, as the file is too large to push. 
+**Important**: Please do not upload checkpoint to github, as the file is too large to push
 
