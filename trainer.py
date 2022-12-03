@@ -1,12 +1,10 @@
 import torch
 import torch.nn as nn
 import pytorch_lightning as pl
-from torchvision import datasets, transforms
-from torch.utils.data import DataLoader, random_split
 from torchmetrics import Accuracy
-from pytorch_lightning.loggers import TensorBoardLogger
 from model import BertClassifier
 from dataloader import TwitterDataset
+
 
 class ModelTraining(pl.LightningModule):
     def __init__(self, dataset: TwitterDataset):
@@ -83,6 +81,9 @@ class TwitterClassifier(pl.LightningModule):
         self.model = BertClassifier(num_label=3)
 
 
+# from torchvision import datasets, transforms
+# from torch.utils.data import DataLoader, random_split
+# from pytorch_lightning.loggers import TensorBoardLogger
 # def train_model(model, optimizer, loss, train_loader, val_loader, num_loops, use_cuda=False):
 #     if use_cuda:
 #         model = model.cuda()

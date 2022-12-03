@@ -11,12 +11,32 @@ class BertClassifier(BertPreTrainedModel):
 
         self.num_label = num_label
         self.bert = BertModel(configuration)
-        self.linear = nn.Linear(configuration.hidden_size, num_label)
+        self.linear = LinearClassifier(configuration.hidden_size, self.num_label, dropout_ratio=0.8)
 
     def forward(self, x):
         outputs = self.bert(x).last_hidden_state
         pred = self.linear(outputs)
         return pred[:, -1, :]
+
+    def predict(self, x):
+        pred = self(x)
+        return torch.argmax(pred, dim=1)
+
+class LinearClassifier(nn.Module):
+    def __init__(self, in_size, out_size, dropout_ratio=0.8):
+        super().__init__()
+        
+        self.in_size = in_size
+        self.out_size = out_size
+
+        self.linear = nn.Linear(in_features=in_size, out_features=out_size)
+        self.drop = nn.Dropout(dropout_ratio)
+        self.softmax = nn.Softmax()
+
+    def forward(self, x):
+        outputs = self.linear(x)
+        outputs = self.drop(outputs)
+        return self.softmax(outputs)
 
 # class TestModel(pl.LightningModule):
 #     def __init__(self):

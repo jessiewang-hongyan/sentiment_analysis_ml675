@@ -1,0 +1,9 @@
+Epoch: 5
+Model: Bert + Linear Model
+Optimizer: Adam
+lr: 1e-3
+
+Train Acc: 0.7748
+Val Acc: 0.7736
+Train Loss: 0.6662
+Val Loss: 0.6634
