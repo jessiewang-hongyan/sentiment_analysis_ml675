@@ -1,10 +1,17 @@
 import pytorch_lightning as pl
 from trainer import ModelTraining
 from dataloader import TwitterDataset
+import torch
 
 
 if __name__ == '__main__':
-    model = ModelTraining()
+    X = torch.load('inputs.pt')
+    y = torch.load('labels.pt')
+    print(X.shape)
+    print(y.shape)
+
+    dataset = TwitterDataset()
+    model = ModelTraining(dataset)
 
     trainer = pl.Trainer(
         max_epochs=5,

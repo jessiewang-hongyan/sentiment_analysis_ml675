@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
-import nltk
+import string
 from tokenizer import tokenize
+import torch
 
 '''Read the data from csv into a dataframe,
 return data matrix X and label matrix y.'''
@@ -24,17 +25,21 @@ def stats_by_category(X, y):
 
 
 # TODO: word preprocessing: 
-#       remove stop words
 #       remove names (words start with an '@')
 #       remove punctuations
-#       convert all capital letters into small ones
-#       stemming
 #       convert words into embeddings - tokenize
 #       save as a file
-def text_preprocess(tweet: str):
-    pass
-    # processed_tweet = 
-    # return processed_tweet
+def text_preprocess(tweets, labels):
+    processed = []
+
+    for tw in tweets:
+        tw = tw.translate(str.maketrans('', '', string.punctuation))
+        x_i = tw.split(' ')
+        processed.append(x_i)
+
+    X, y = tokenize(processed, labels)
+    torch.save(X, 'inputs.pt')
+    torch.save(y, 'labels.pt')
 
 if __name__ == "__main__":
     # nltk.download('stopwords', './stopwords')
@@ -44,3 +49,5 @@ if __name__ == "__main__":
     print(f"y0: {y.iloc[0]}")
 
     stats_by_category(X, y)
+
+    text_preprocess(X, y)

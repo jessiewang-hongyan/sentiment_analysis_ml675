@@ -14,22 +14,22 @@ class BertClassifier(BertPreTrainedModel):
         self.linear = nn.Linear(configuration.hidden_size, num_label)
 
     def forward(self, x):
-        outputs, hidden = self.bert(x)
+        outputs = self.bert(x).last_hidden_state
         pred = self.linear(outputs)
-        return pred
+        return pred[:, -1, :]
 
-class TestModel(pl.LightningModule):
-    def __init__(self):
-        super().__init__()
-        self.l1 = nn.Linear(28*28, 64)
-        self.l2 = nn.Linear(64, 64)
-        self.l3 = nn.Linear(64, 10)
-        self.dropout = nn.Dropout(0.1)
+# class TestModel(pl.LightningModule):
+#     def __init__(self):
+#         super().__init__()
+#         self.l1 = nn.Linear(28*28, 64)
+#         self.l2 = nn.Linear(64, 64)
+#         self.l3 = nn.Linear(64, 10)
+#         self.dropout = nn.Dropout(0.1)
 
-    def forward(self, x):
-        h1 = nn.functional.relu(self.l1(x))
-        h2 = nn.functional.relu(h1)
-        do = self.dropout(h2 + h1)
-        logits = self.l3(do)
-        return logits
+#     def forward(self, x):
+#         h1 = nn.functional.relu(self.l1(x))
+#         h2 = nn.functional.relu(h1)
+#         do = self.dropout(h2 + h1)
+#         logits = self.l3(do)
+#         return logits
 

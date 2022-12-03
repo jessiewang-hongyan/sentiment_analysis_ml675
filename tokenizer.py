@@ -11,15 +11,22 @@ def tokenize(sentences, labels):
 
     input_ids = []
     attention_masks = []
-    encoded_dict = tokenizer.encode_plus(
-        sent,  
-        add_special_tokens = True,
-        return_attention_mask = True,  
-        return_tensors = 'pt', 
-        )
 
-    input_ids.append(encoded_dict['input_ids'])
-    attention_masks.append(encoded_dict['attention_mask'])
+    for sent in sentences:
+        encoded_dict = tokenizer.encode_plus(
+            sent,  
+            max_length = max_len,
+            pad_to_max_length =True,
+            add_special_tokens = True,
+            return_attention_mask = True,  
+            return_tensors = 'pt', 
+            )
+        # pad the encoded data
+        # encoded_dict.append([0]* (max_len - len(encoded_dict)))
+
+        input_ids.append(encoded_dict['input_ids'])
+        attention_masks.append(encoded_dict['attention_mask'])
+
     input_ids = torch.cat(input_ids, dim=0)
     attention_masks = torch.cat(attention_masks, dim=0)
     labels = torch.tensor(labels)
