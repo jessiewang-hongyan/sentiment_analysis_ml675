@@ -30,9 +30,11 @@ In *dataloader.py*, line 28-30, add argument *num_workers* for more threads.
 ## Use GPUs
 In *main.py*, line 18, uncomment the *gpus* argument and assign correct numbers of GPUs you'd like to use.
 
-## Upload trained models and model
+## Upload trained stats
 1. Find the version folder you wish to upload in folder *./lightninglogs*, rename the folder to avoid overwriting
 2. Add *hparams.txt* in the version folder
 3. In *hparams.txt*, add epochs, model structures, hyperparameters, final train/val loss and accuracy
-4. Push all files in that folder
+4. Push all files except the checkpoint in that folder
+
+**Important**: Please do not upload checkpoint to github, as the file is too large to push. 
 
