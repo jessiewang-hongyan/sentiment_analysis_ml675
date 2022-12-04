@@ -1,6 +1,9 @@
 # sentiment_analysis_ml675
 Final project for EN.601.675. 
+
 Runable colab notebook: https://colab.research.google.com/drive/1cEBcIBwoRyPbYammOuuY2SuTNC-TCmQ7?usp=sharing
+
+Fine-tuning excel: https://docs.google.com/spreadsheets/d/1hs2sxvi-YK2UUQlPB3JRQbNBst0QiHt1D1fjKly2XVA/edit?usp=sharing
 
 
 ## Run virutal environment in VSCode:
@@ -39,3 +42,14 @@ In *main.py*, line 18, uncomment the *gpus* argument and assign correct numbers 
 
 **Important**: Please do not upload checkpoint to github, as the file is too large to push
 
+## Hyperparameter Tuning
+1. Epoch: main.py
+2. Optimizer & learning rate: trainer.py
+3. Batch size: dataloader.py
+
+## TODO: 
+1. predict function - wyj
+2. 80% accuracy model - 3
+3. data visualization - zq
+4. optimizer tuning - 
+5. ppt
