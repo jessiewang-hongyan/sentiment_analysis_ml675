@@ -34,6 +34,7 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pyparsing==3.0.9
 python-dateutil==2.8.2
+pytorch-ignite==0.4.10
 pytorch-lightning==1.8.3.post0
 pytz==2022.6
 PyYAML==6.0
@@ -61,5 +62,6 @@ transformers==4.24.0
 typing-extensions==4.4.0
 urllib3==1.26.12
 Werkzeug==2.2.2
+wrapt==1.14.1
 yarl==1.8.1
 zipp==3.10.0

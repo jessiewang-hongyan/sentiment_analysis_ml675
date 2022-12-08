@@ -18,10 +18,18 @@ def read_data(file_path='labeled_data.csv'):
 
 
 def stats_by_category(X, y):
+    ratios = []
     for i in range(3):
+        ratios.append(len(X[y==i]))
         print(f'Class {i}: {len(X[y==i])} samples.')
 
     print(f'Total: {len(y)} smaples.')
+
+    normalizer = sum(ratios)
+    for i in range(3):
+        ratios[i] /= normalizer
+    print(f'Class ratios: {ratios}')
+    return ratios
 
 
 # TODO: word preprocessing: 

@@ -1,10 +1,9 @@
 import torch
 import torch.nn as nn
 import pytorch_lightning as pl
-from torchmetrics import Accuracy
 from model import BertClassifier
 from dataloader import TwitterDataset
-
+from ignite.metrics import Accuracy, ClassificationReport
 
 class ModelTraining(pl.LightningModule):
     def __init__(self, dataset: TwitterDataset):
