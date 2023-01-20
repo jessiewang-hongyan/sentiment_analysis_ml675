@@ -1,7 +1,7 @@
 # sentiment_analysis_ml675
 Final project for EN.601.675. 
 
-Runable colab notebook: https://colab.research.google.com/drive/1cEBcIBwoRyPbYammOuuY2SuTNC-TCmQ7?usp=sharing
+Runable colab notebook: https://colab.research.google.com/drive/1_UXQCZchsjKf_gW1KEcI2FHnzgur9_sE
 
 Fine-tuning excel: https://docs.google.com/spreadsheets/d/1hs2sxvi-YK2UUQlPB3JRQbNBst0QiHt1D1fjKly2XVA/edit?usp=sharing
 
