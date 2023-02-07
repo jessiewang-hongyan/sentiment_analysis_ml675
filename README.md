@@ -47,9 +47,3 @@ In *main.py*, line 18, uncomment the *gpus* argument and assign correct numbers 
 2. Optimizer & learning rate: trainer.py
 3. Batch size: dataloader.py
 
-## TODO: 
-1. predict function - wyj
-2. 80% accuracy model - 3
-3. data visualization - zq
-4. optimizer tuning - 
-5. ppt
